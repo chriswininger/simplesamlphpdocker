@@ -10,7 +10,6 @@ RUN php5enmod mcrypt
 
 # update apache config
 ADD ./docker-source/sites-available/saml.idp.local.conf /etc/apache2/sites-available/saml.idp.local.conf
-ADD ./docker-source/sites-available/saml.idp.local.conf /etc/apache2/sites-available/saml.sp.local.conf
 
 # add our default configs
 ADD ./docker-source/etc/simplesamlphp/attributemap/name2oidAirspring.php /etc/simplesamlphp/attributemap/name2oidAirspring.php
@@ -23,7 +22,6 @@ ADD ./docker-source/usr/share/modules/exampleauth/enable /usr/share/modules/exam
 # create apache symlinks
 RUN a2dissite 000-default.conf
 RUN a2ensite saml.idp.local.conf
-RUN a2ensite saml.sp.local.conf
 
 # create volumes to allow changes to simple saml config from host
 VOLUME /etc/simplesamlphp
