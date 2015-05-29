@@ -1,0 +1,20 @@
+<?php
+$config = array(
+        'example-userpass' => array(
+                'exampleauth:UserPass',
+                'student:studentpass' => array(
+                        'uid' => array('student'),
+                        'eduPersonAffiliation' => array('member', 'student'),
+			'cn' => array('Chris Wininger'),
+			'fuckyouSAML' => array('what the hell')
+
+                ),
+                'employee:employeepass' => array (
+                        'uid' => array('employee'),
+                        'eduPersonffiliation' => array('member', 'employee'),
+			'cn' => array('Bob Vance'),
+			'fuckyouSAML' => array('what the hell')
+                )
+        )
+);
+
