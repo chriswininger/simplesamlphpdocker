@@ -95,19 +95,27 @@ $config = array(
            'fuckyouSAML' => 'urn:oid:2.5.4.4',
         ),*/
 
-        'student:studentpass' => array(
+        'chriswininger:xxx' => array(
             'uid' => array('test'),
             'cn' => array('Chris Wininger'),
-            'eduPersonAffiliation' => array('member', 'student'),
-	    'fuckyouSAML' => array('what the hell'),
-	    'commonname' => array('whats your deal')
+            'eduPersonAffiliation' => array('member', 'student')
         ),
-        'employee:employeepass' => array(
+        'bobvance:xxx' => array(
             'uid' => array('employee'),
             'cn' => array('Bob Vance'),
-            'eduPersonAffiliation' => array('member', 'employee'),
-	    'fuckyouSAML' => array('what the hell')
+            'eduPersonAffiliation' => array('member', 'employee')
         ),
+        'ghostmatt:xxx' => array(
+            'uid' => array('test'),
+            'cn' => array('Ghost Matt Bra'),
+            'eduPersonAffiliation' => array('member', 'student')
+        ),
+        'jz:xxx' => array(
+            'uid' => array('employee'),
+            'cn' => array('Do You Even Lift'),
+            'eduPersonAffiliation' => array('member', 'employee')
+        ),
+
     ),
     
 
