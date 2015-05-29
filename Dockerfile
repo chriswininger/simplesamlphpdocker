@@ -17,11 +17,14 @@ ADD ./docker-source/etc/simplesamlphp/metadata/saml20-idp-hosted.php /etc/simple
 ADD ./docker-source/etc/simplesamlphp/metadata/saml20-sp-remote.php /etc/simplesamlphp/metadata/saml20-sp-remote.php
 ADD ./docker-source/etc/simplesamlphp/authsources.php /etc/simplesamlphp/authsources.php
 ADD ./docker-source/etc/simplesamlphp/config.php /etc/simplesamlphp/config.php
-ADD ./docker-source/usr/share/modules/exampleauth/enable /usr/share/modules/exampleauth/enable
-
+# enable example auth
+RUN touch /usr/share/simplesamlphp/modules/exampleauth/enable
 # create apache symlinks
 RUN a2dissite 000-default.conf
 RUN a2ensite saml.idp.local.conf
+
+# create certs
+openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -subj "/C=US/ST=KY/L=Lexington/O=Dis/CN=www.airspringsoftware.com" -out /etc/ssl/certs/simplesamlphp.crt -keyout /etc/ssl/certs/simplesamlphp.pem
 
 # create volumes to allow changes to simple saml config from host
 VOLUME /etc/simplesamlphp
