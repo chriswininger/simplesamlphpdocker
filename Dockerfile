@@ -17,6 +17,8 @@ ADD ./docker-source/etc/simplesamlphp/metadata/saml20-idp-hosted.php /etc/simple
 ADD ./docker-source/etc/simplesamlphp/metadata/saml20-sp-remote.php /etc/simplesamlphp/metadata/saml20-sp-remote.php
 ADD ./docker-source/etc/simplesamlphp/authsources.php /etc/simplesamlphp/authsources.php
 ADD ./docker-source/etc/simplesamlphp/config.php /etc/simplesamlphp/config.php
+ADD ./docker-source/etc/certs/ssl/server.crt /etc/certs/ssl/server.crt
+
 # enable example auth
 RUN touch /usr/share/simplesamlphp/modules/exampleauth/enable
 # create apache symlinks

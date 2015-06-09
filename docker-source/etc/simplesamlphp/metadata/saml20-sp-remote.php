@@ -5,5 +5,8 @@ $metadata['https://saml.sp.local/simplesaml/module.php/saml/sp/metadata.php/defa
 );
 $metadata['https://local.airspringsoftware.com/idp']=array(
 	'AssertionConsumerService' => 'https://local.airspringsoftware.com:6001/auth/saml/callback',
-	'SingleLogoutService' => 'https://saml.sp.local/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp'
+	'SingleLogoutService' => 'https://saml.sp.local/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp',
+ 	'redirect.validate' => TRUE,
+        'redirect.sign' => TRUE,
+        'certificate' => 'server.crt'
 );

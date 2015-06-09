@@ -1,0 +1,4 @@
+The server.crt in the docker-source/etc/certs/ssl folder goes along with samlClient.pem.
+Put the samlClient.pem in airstep1/server/userAuth/saml.cert to sign requests for this saml instance
+If you want to be able to generate correct metadata also place server.crt in that same folder, renaming it to samlClient.crt
+
