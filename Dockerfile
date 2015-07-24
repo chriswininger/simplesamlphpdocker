@@ -18,6 +18,7 @@ ADD ./docker-source/etc/simplesamlphp/metadata/saml20-sp-remote.php /etc/simples
 ADD ./docker-source/etc/simplesamlphp/authsources.php /etc/simplesamlphp/authsources.php
 ADD ./docker-source/etc/simplesamlphp/config.php /etc/simplesamlphp/config.php
 ADD ./docker-source/etc/certs/ssl/server.crt /etc/certs/ssl/server.crt
+ADD ./docker-source/ete/certs/ssl/simplesamlphp.pem /etc/certs/ssl/simplesamlphp.pem
 
 # enable example auth
 RUN touch /usr/share/simplesamlphp/modules/exampleauth/enable
