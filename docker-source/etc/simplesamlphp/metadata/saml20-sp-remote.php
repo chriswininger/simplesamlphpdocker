@@ -8,5 +8,5 @@ $metadata['https://local.airspringsoftware.com/idp']=array(
 	'SingleLogoutService' => 'https://saml.sp.local/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp',
  	'redirect.validate' => TRUE,
         'redirect.sign' => TRUE,
-        'certificate' => 'server.crt'
+        'certificate' => 'simplesamlphp.crt'
 );

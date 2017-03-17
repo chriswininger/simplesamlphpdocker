@@ -17,8 +17,12 @@ ADD ./docker-source/etc/simplesamlphp/metadata/saml20-idp-hosted.php /etc/simple
 ADD ./docker-source/etc/simplesamlphp/metadata/saml20-sp-remote.php /etc/simplesamlphp/metadata/saml20-sp-remote.php
 ADD ./docker-source/etc/simplesamlphp/authsources.php /etc/simplesamlphp/authsources.php
 ADD ./docker-source/etc/simplesamlphp/config.php /etc/simplesamlphp/config.php
-ADD ./docker-source/etc/certs/ssl/server.crt /etc/certs/ssl/server.crt
-ADD ./docker-source/ete/certs/ssl/simplesamlphp.pem /etc/certs/ssl/simplesamlphp.pem
+
+# add helper scripts
+ADD ./docker-source/scripts/stripCert.sh /stripCert.sh
+ADD ./docker-source/scripts/outputCerts.sh /outputCerts.sh
+RUN chmod +x /stripCert.sh
+RUN chmod +x /outputCerts.sh
 
 # enable example auth
 RUN touch /usr/share/simplesamlphp/modules/exampleauth/enable
@@ -32,7 +36,15 @@ RUN openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -subj "/C=US/ST=KY
 # create volumes to allow changes to simple saml config from host
 VOLUME /etc/simplesamlphp
 VOLUME /usr/share/simplesamlphp
+VOLUME /etc/ssl/certs
 
 # reload apache
-RUN service apache2 start
+RUN service apache2 start 
+
+RUN /outputCerts.sh
+
+EXPOSE 8080
+ENTRYPOINT ["/usr/sbin/apache2ctl"]
+CMD ["-D", "FOREGROUND"]
+
 

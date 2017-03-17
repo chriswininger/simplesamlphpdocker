@@ -22,7 +22,7 @@ $config = array(
      * reverse proxy).
      */
     'baseurlpath' => 'simplesamlphp/',
-    'certdir' => '/etc/certs/ssl/',
+    'certdir' => '/etc/ssl/certs',
     'loggingdir' => '/var/log/simplesamlphp/',
     'datadir' => '/var/lib/simplesamlphp/data/',
     'metadatadir' => '/etc/simplesamlphp/metadata/',

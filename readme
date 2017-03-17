@@ -1,4 +1,84 @@
-The server.crt in the docker-source/etc/certs/ssl folder goes along with samlClient.pem.
-Put the samlClient.pem in airstep1/server/userAuth/saml.cert to sign requests for this saml instance
-If you want to be able to generate correct metadata also place server.crt in that same folder, renaming it to samlClient.crt
+In this directory run
+
+* Run
+   docker built -t caw-simplesamlphp ./
+
+* You will notice near the end of the output process it spits out something like the following (each build will be different)
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== copy to cert field ====
+MIIDkzCCAnugAwIBAgIJAJMYTksMuAFHMA0GCSqGSIb3DQEBCwUAMGAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJLWTESMBAGA1UEBwwJTGV4aW5ndG9uMQwwCgYDVQQKDANEaXMxIjAgBgNVBAMMGXd3dy5haXJzcHJpbmdzb2Z0d2FyZS5jb20wHhcNMTcwMzE3MjIyMTQ3WhcNMjcwMzE3MjIyMTQ3WjBgMQswCQYDVQQGEwJVUzELMAkGA1UECAwCS1kxEjAQBgNVBAcMCUxleGluZ3RvbjEMMAoGA1UECgwDRGlzMSIwIAYDVQQDDBl3d3cuYWlyc3ByaW5nc29mdHdhcmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmElFp5BhOFq0IRZuRHJMa8kHyEqy+OkXnL+a2z0f5jTe4C+lSTIKQz1l3qZTeykeizX+8eubSzBi5yO0nAA1Y0gPDGQGMLssFy0mfAuyE8S/2rvybvew2Yy7qFrlOjAlR+MGRCl34rRQXS67HGuRooFvw3JyAd6Ex7Ay18iJFPEtNeFn6IlM7HM5mLmNWZut0SnOXuVdLad3dapRgsjVxxAZRfKYzatzFHWu5eiA+60tsoevlToE0VAviSZjxx0ZgRqbCmmS41EUiDTvcQtYfo0ktl8qhbFCo0JcPUKUbWIk/iBgxxI4oJVdfCvis+Kd4mVJ8k3skHWiBJtSfznTUQIDAQABo1AwTjAdBgNVHQ4EFgQU3ueVevQLI2qtSbIRmL7vvEbLuUAwHwYDVR0jBBgwFoAU3ueVevQLI2qtSbIRmL7vvEbLuUAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAJX8W1VxM75EGnwsiJnYlh4ABqIdd3epgbYRGQt1OAtd2ANmtwg7jpcNFFs7GwoLQ5RT1rwuyTBygzMCEti9sOASANJzL0qVYxXikWALT6zH2z8zaU2XbUFeRyqTUpgAj9DbTqJuuNrVkVkggNwCwCmSQ8VzTDICa8uXh8lzNAT93oDNFX09rufrAdBX5UHabZi5WyIyKYTaAFnrmo8i8T0vvzZ07A06wNKvtduzaR1ZeHQdwxU78YyLJbVxEa9sFPgetsFRlyjxcF26U+Yl2IiX3pu4AREE6MGo9uXXjWr71lCzB7xBd3PJ5gcQoKvBobWPs2FFc0gkFKY3GIA1HWg
+====== copy these lines into the Decryption certs field of the user source ====
+-----BEGIN CERTIFICATE-----
+MIIDkzCCAnugAwIBAgIJAJMYTksMuAFHMA0GCSqGSIb3DQEBCwUAMGAxCzAJBgNV
+BAYTAlVTMQswCQYDVQQIDAJLWTESMBAGA1UEBwwJTGV4aW5ndG9uMQwwCgYDVQQK
+DANEaXMxIjAgBgNVBAMMGXd3dy5haXJzcHJpbmdzb2Z0d2FyZS5jb20wHhcNMTcw
+MzE3MjIyMTQ3WhcNMjcwMzE3MjIyMTQ3WjBgMQswCQYDVQQGEwJVUzELMAkGA1UE
+CAwCS1kxEjAQBgNVBAcMCUxleGluZ3RvbjEMMAoGA1UECgwDRGlzMSIwIAYDVQQD
+DBl3d3cuYWlyc3ByaW5nc29mdHdhcmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOC
+AQ8AMIIBCgKCAQEAmElFp5BhOFq0IRZuRHJMa8kHyEqy+OkXnL+a2z0f5jTe4C+l
+STIKQz1l3qZTeykeizX+8eubSzBi5yO0nAA1Y0gPDGQGMLssFy0mfAuyE8S/2rvy
+bvew2Yy7qFrlOjAlR+MGRCl34rRQXS67HGuRooFvw3JyAd6Ex7Ay18iJFPEtNeFn
+6IlM7HM5mLmNWZut0SnOXuVdLad3dapRgsjVxxAZRfKYzatzFHWu5eiA+60tsoev
+lToE0VAviSZjxx0ZgRqbCmmS41EUiDTvcQtYfo0ktl8qhbFCo0JcPUKUbWIk/iBg
+xxI4oJVdfCvis+Kd4mVJ8k3skHWiBJtSfznTUQIDAQABo1AwTjAdBgNVHQ4EFgQU
+3ueVevQLI2qtSbIRmL7vvEbLuUAwHwYDVR0jBBgwFoAU3ueVevQLI2qtSbIRmL7v
+vEbLuUAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAJX8W1VxM75EG
+nwsiJnYlh4ABqIdd3epgbYRGQt1OAtd2ANmtwg7jpcNFFs7GwoLQ5RT1rwuyTByg
+zMCEti9sOASANJzL0qVYxXikWALT6zH2z8zaU2XbUFeRyqTUpgAj9DbTqJuuNrVk
+VkggNwCwCmSQ8VzTDICa8uXh8lzNAT93oDNFX09rufrAdBX5UHabZi5WyIyKYTaA
+Fnrmo8i8T0vvzZ07A06wNKvtduzaR1ZeHQdwxU78YyLJbVxEa9sFPgetsFRlyjxc
+F26U+Yl2IiX3pu4AREE6MGo9uXXjWr71lCzB7xBd3PJ5gcQoKvBobWPs2FFc0gkF
+KY3GIA1HWg==
+-----END CERTIFICATE-----
+==== copy these lines into the Private Cert and Decryption Pvk fields of the user source ====
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCYSUWnkGE4WrQh
+Fm5EckxryQfISrL46Recv5rbPR/mNN7gL6VJMgpDPWXeplN7KR6LNf7x65tLMGLn
+I7ScADVjSA8MZAYwuywXLSZ8C7ITxL/au/Ju97DZjLuoWuU6MCVH4wZEKXfitFBd
+Lrsca5GigW/DcnIB3oTHsDLXyIkU8S014WfoiUzsczmYuY1Zm63RKc5e5V0tp3d1
+qlGCyNXHEBlF8pjNq3MUda7l6ID7rS2yh6+VOgTRUC+JJmPHHRmBGpsKaZLjURSI
+NO9xC1h+jSS2XyqFsUKjQlw9QpRtYiT+IGDHEjiglV18K+Kz4p3iZUnyTeyQdaIE
+m1J/OdNRAgMBAAECggEAbvblJGYWEUQ2gO2hR4qpmNiRLScRJkJijDspkZsGhW39
+AQp2u9EUnU49znEP32xk7zdXH9x3+d+2EYp47jtQq5k0LeksgZHBXNnvcu/qwHDb
+A31z99vQJ5VeoBwrb6zpXWpVhJFa4/xTmrKUcO8I3YrHb3kTDb2grwj64zUiffjn
+C0lHvkAzeGxAA53Wlo01+yGUqa7oQCq9nGx6cndpS4Ma8pY7vFrJJQJb7PEvYCgd
+fpQhqY3dVCJAaHY8V0+98CN8R9qWAfvK+3ZDd5Gei0awEaJWN7EuNO14h6jExF3S
+bZRNZCb3BbWxhBAUVabk7a3ScuAyKAtpZgiXMtbYaQKBgQDKkzkxgs+siFa+vtS1
+XbvZxEKfrtml3gjBZiIbGzqmyUqbphlp+dGHrAdG43Ei0aFyAYfX+bTMMqlJagkw
+D6TbSwpbK9OKawYrurd7cBdf1ttWJxhh6xtCX9iV9o+aQhkCvmUO304XWORWUYt3
+9BQcthD2Zk4DlLVwiFbN6LogDwKBgQDActDET6kKq8wmtWi37JYdRvaD8G5uKZMJ
+WcSfyD5iRJBqkCKHGy3qVj1GW7UBM12a9GBCqh1z4Mu8SC9kbWpBXS3UA3l4sKLB
+0qlzHV7EyjCrJPrwkCryPSdK7bwkVMOy83nGBJr5YZzPqXnp3bwdKKtXoMkQQWEV
+uCtbwJd2nwKBgHsjr1qXZ+I7Jm/g1LBDAFPJ563lvcwEAlJ94TGVBbwpFD81YrF2
++JV+TxYaX8WIpJkGsSrqUarnCNzlphwfBll/bhYpt/emQyQF5k8UvkC1/LKMJVgw
+cGuSk7flHznoAAgY8JlvyKqMkJCgFSWfqzIgwoLlgXrPxNNZLVsRo0KlAoGBAK0S
+1POn3JOvO1OYlEvMppg/6JVx1i6Wjxi6tZ0pHgmMNgDQDW1KITn9QvASq68fvdAM
+dMGfcgtzoGZ82LpNuGB+Zyej1EuZN1ZumVvgjwkV+T0BbfiI/0aJftvg//IAlVtL
+ojlWjPU4Nyl+9hhABNyIZcfR3uESmzhIQB4tD0prAoGAPZwkiW0M9s7aBT4MkQ6z
+DA6IL2qwYzBo/ZYzhqZX/HOc9asovHgqtZOM3Rz06vXw0CjnkV6BZCkzSGLsleEX
+xhYlqn9A4YqV1bQnmk/6wsxKh6wqCAHvHHTurkCZQQJdEuXg/MjjLS7quzkNPh1a
+MF+Lw9OhRdly63NLT5VCM08=
+-----END PRIVATE KEY-----
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Do What it Says
+* For testing you can use the asr in the root of this directory
+* run
+	docker run -p 58080:8080 --name caw-simplesamlphp caw-simplesamlphp
+
+* Other User Source Settings =>
+  Path: /auth/saml/callback
+  Entry Point: http://localhost:58080/simplesamlphp/saml2/idp/SSOService.php
+  Issuer (Entity ID): https://local.airspringsoftware.com/idp
+  Callback URL: /auth/saml/callback
+  Protocol: http://
+  Identifier Format: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+  Accepted Clock Skew (Ms): 0
+  Auth Context: urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+
+* A sample user login is 
+	name: chriswininger
+   pw: xxx
 
